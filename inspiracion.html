@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inspiración Visual</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            flex: 0 1 calc(33.33% - 20px);
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-item .description {
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #555;
+        }
+
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                flex: 0 1 calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Inspiración Visual</h1>
+        <p>Explora imágenes que despiertan creatividad y pasión por el arte</p>
+    </header>
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fe/Dragon_Ball_Xenoverse_2_Cover.jpeg/220px-Dragon_Ball_Xenoverse_2_Cover.jpeg" alt="Imagen 1" width="500px" height="300px">
+                <div class="description">Portada de Dragon Ball Xenoverse 2</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://pics.filmaffinity.com/metal_gear_solid_2_sons_of_liberty-906556843-large.jpg" alt="Imagen 2" width="500px" height="300px">
+                <div class="description">Portada de Metal Gear Solid 2</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://preview.redd.it/p4enapqkx2851.jpg?auto=webp&s=69bdca69e554110279b8a398288ec8ccdaa35431" alt="Imagen 3" width="500px" height="300px">
+                <div class="description">Portada de Halo 2</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.scdn.co/image/ab67616d0000b273dc30583ba717007b00cceb25" alt="Imagen 4" width="500px" height="300px">
+                <div class="description">Abbey Road (The Beatles, 1969)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://dg9aaz8jl1ktt.cloudfront.net/uploaded_files/000/098/792/verkami_f06dfa0a1ad763cd6a8bb717d2b82a65.jpg?1468666478" alt="Imagen 5" width="500px" height="300px">
+                <div class="description">Aladdin Sane (David Bowie, 1973)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://mussica.info/wp-content/uploads/2021/10/dark-side-1024x1024.jpg" alt="Imagen 6" width="500px" height="300px">
+                <div class="description">The Dark Side of the Moon (Pink Floyd, 1973)</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Inspiración Visual. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

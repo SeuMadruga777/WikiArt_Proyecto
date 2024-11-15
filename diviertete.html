@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibujo Avanzado - Lienzo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #miLienzo {
+            border: 1px solid #000;
+            cursor: crosshair;
+            background-color: #ffffff;
+        }
+
+        .contenedor {
+            margin: 20px 0;
+        }
+
+        button, select, input[type="color"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .configuracion {
+            margin-bottom: 20px;
+        }
+
+        .herramientas {
+            margin-top: 20px;
+        }
+
+        .paleta {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .paleta button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .barra {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .barra input[type="range"] {
+            width: 150px;
+        }
+
+        .historial {
+            margin-top: 10px;
+        }
+
+        .guardar {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Herramienta de Dibujo</h1>
+
+    <!-- Configuración del grosor y estilo de trazo -->
+    <div class="configuracion">
+        <label for="grosor">Grosor del trazo: </label>
+        <input type="range" id="grosor" min="1" max="20" value="5">
+        <br>
+        <label for="opacidad">Opacidad: </label>
+        <input type="range" id="opacidad" min="0" max="100" value="100">
+    </div>
+
+    <!-- Selección de color y herramientas -->
+    <div class="herramientas">
+        <button onclick="cambiarHerramienta('pincel')">Pincel</button>
+        <button onclick="cambiarHerramienta('borrador')">Borrador</button>
+        <input type="color" id="color" value="#000000">
+    </div>
+
+    <!-- Canvas -->
+    <div class="contenedor">
+        <canvas id="miLienzo" width="800" height="500"></canvas>
+    </div>
+
+    <!-- Barra de deshacer y rehacer -->
+    <div class="historial">
+        <button onclick="deshacer()">Deshacer</button>
+        <button onclick="rehacer()">Rehacer</button>
+    </div>
+
+    <!-- Botón de guardar imagen -->
+    <div class="guardar">
+        <button onclick="guardar()">Guardar Imagen</button>
+    </div>
+
+    <script>
+        // Inicialización del lienzo y contexto
+        const lienzo = document.getElementById('miLienzo');
+        const ctx = lienzo.getContext('2d');
+        let dibujando = false;
+        let colorActual = '#000000';
+        let grosorActual = 5;
+        let opacidadActual = 1;
+        let herramientaActual = 'pincel';
+        let historial = [];
+        let historialRedo = [];
+
+        // Configuración inicial
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+
+        // Función para iniciar el dibujo
+        lienzo.addEventListener('mousedown', (event) => {
+            dibujando = true;
+            historialRedo = []; // Limpiar el historial de rehacer al empezar a dibujar
+            const { offsetX: x, offsetY: y } = event;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            historial.push({ herramienta: herramientaActual, color: colorActual, grosor: grosorActual, opacidad: opacidadActual, trazo: [{ x, y }] });
+        });
+
+        // Función para continuar el dibujo
+        lienzo.addEventListener('mousemove', (event) => {
+            if (dibujando) {
+                const { offsetX: x, offsetY: y } = event;
+                const trazo = historial[historial.length - 1].trazo;
+                trazo.push({ x, y });
+                ctx.lineWidth = grosorActual;
+                ctx.strokeStyle = colorActual;
+                ctx.globalAlpha = opacidadActual / 100;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+        });
+
+        // Detener el dibujo
+        lienzo.addEventListener('mouseup', () => {
+            dibujando = false;
+        });
+
+        // Función para cambiar la herramienta (pincel o borrador)
+        function cambiarHerramienta(herramienta) {
+            herramientaActual = herramienta;
+            if (herramienta === 'borrador') {
+                ctx.globalCompositeOperation = 'destination-out'; // Activa el borrador
+            } else {
+                ctx.globalCompositeOperation = 'source-over'; // Vuelve al pincel
+            }
+        }
+
+        // Función para cambiar el color
+        document.getElementById('color').addEventListener('input', (event) => {
+            colorActual = event.target.value;
+        });
+
+        // Función para cambiar el grosor del trazo
+        document.getElementById('grosor').addEventListener('input', (event) => {
+            grosorActual = event.target.value;
+        });
+
+        // Función para cambiar la opacidad del trazo
+        document.getElementById('opacidad').addEventListener('input', (event) => {
+            opacidadActual = event.target.value;
+        });
+
+        // Función para deshacer el último trazo
+        function deshacer() {
+            if (historial.length > 0) {
+                historialRedo.push(historial.pop());
+                redraw();
+            }
+        }
+
+        // Función para rehacer el último trazo deshecho
+        function rehacer() {
+            if (historialRedo.length > 0) {
+                historial.push(historialRedo.pop());
+                redraw();
+            }
+        }
+
+        // Función para volver a dibujar todos los trazos del historial
+        function redraw() {
+            ctx.clearRect(0, 0, lienzo.width, lienzo.height);
+            historial.forEach((trazo) => {
+                ctx.beginPath();
+                trazo.trazo.forEach((punto, index) => {
+                    if (index === 0) {
+                        ctx.moveTo(punto.x, punto.y);
+                    } else {
+                        ctx.lineTo(punto.x, punto.y);
+                    }
+                });
+                ctx.lineWidth = trazo.grosor;
+                ctx.strokeStyle = trazo.color;
+                ctx.globalAlpha = trazo.opacidad / 100;
+                ctx.stroke();
+            });
+        }
+
+        // Función para guardar la imagen
+        function guardar() {
+            const dataUrl = lienzo.toDataURL();
+            const a = document.createElement('a');
+            a.href = dataUrl;
+            a.download = 'dibujo.png';
+            a.click();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portadas de Comics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style type="text/css">
+
+
+        :root {
+            --background-color: #1e1e2f;
+            --text-color: #eaeaea;
+            --item-background: #2a2a3b;
+            --item-border: #444;
+            --editable-border: #ff9800;
+            --footer-background: #333;
+            --footer-text: #fff;
+            --highlight: #ff5722;
+        }
+
+       body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f8c471, #e74c3c); /* Fondo con gradiente */
+    color: #333; /* Texto principal oscuro */
+    line-height: 1.6;
+}
+
+        h1 {
+            color: var(--highlight);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .item {
+            background: var(--item-background);
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--item-border);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .editable {
+            border: 1px dashed var(--editable-border);
+            padding: 10px;
+            cursor: text;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .editable:empty:before {
+            content: "Haz clic para editar...";
+            color: #999;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: var(--footer-background);
+            color: var(--footer-text);
+            font-size: 0.9rem;
+        }
+    </style>
+
+    <section id="home" class="text-center text-white py-5" style="background: linear-gradient(135deg, #e67e22, #c0392b);">
+    <div class="container" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px;">
+    <h1 class="display-4">Portadas de Comics</h1>
+    <p class="lead">Estas portadas no solo son una forma de atraer al público...</p>
+</div>
+
+
+    
+</section>
+
+    <script type="text/javascript">
+        alert("Bienvenido a comics");
+    </script>
+</head>
+<body>
+    
+    <div class="grid">
+        <div class="item">
+            <img src="https://static.wikia.nocookie.net/marveldatabase/images/5/55/Civil_War_Vol_1_1_Turner_Variant_Textless.jpg/revision/latest?cb=20111216094430" alt="Imagen 1">
+            <div class="editable">Civil War (Marvel) La imagen destaca por su composición épica, mostrando a los héroes en posturas intensas, lo que refleja conflicto y división. Los colores oscuros y los contrastes profundos transmiten una atmósfera de tensión y dramatismo.</div>
+        </div>
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/91Z1FuafxKL._AC_UF1000,1000_QL80_.jpg" alt="Imagen 2">
+            <div class="editable">Old Man Logan (Marvel): Esta portada utiliza tonos apagados y un estilo desgastado que refleja la naturaleza post-apocalíptica del mundo de Logan. La figura de Logan en primer plano, con expresión cansada y mirada fija, evoca un sentido de soledad y supervivencia.</div>
+        </div>
+        <div class="item">
+            <img src="https://www.akiracomics.com/imagenes/porreferencia?identidad=a5bf2915-5009-43b0-bff3-7d6ee914bdd0&referencia=&ancho=&alto=" alt="Imagen 3">
+            <div class="editable">Spider-Man: La Última Cacería de Kraven (Marvel): Con una atmósfera oscura y angustiante, esta portada muestra a Spider-Man vulnerable, atrapado y expuesto. La oscuridad y las sombras refuerzan el tono psicológico de la historia y el sentimiento de peligro inminente.</div>
+        </div>
+        <div class="item">
+            <img src="https://www.comicverso.com/wp-content/uploads/2021/08/Mejores-portadistas-USA-1.jpg" alt="Imagen 1">
+            <div class="editable">Liga de la Justicia: Los héroes se representan de manera monumental y heroica, con colores intensos y una luz dramática que los destaca del fondo. La imagen transmite poder y un sentido de unidad a través de la composición piramidal.</div>
+        </div>
+        <div class="item">
+            <img src="https://www.lacasadeel.net/wp-content/uploads/2023/04/DC-Comics-7-696x1068.jpg.webp" alt="Imagen 2">
+            <div class="editable">Batman y Harley Quinn (DC): Con una paleta de colores contrastante, se muestra a Batman y Harley en un duelo visual que representa el caos y la oscuridad de Gotham. Los colores rojos y negros resaltan la naturaleza intensa y conflictiva de su relación.</div>
+        </div>
+        <div class="item">
+            <img src="https://cdnx.jumpseller.com/plus-ultra1/image/50891335/batman_tdkr_cov-3ea11f0f5bfc30a81317183184295034-1024-1024.webp?1721424434" alt="Imagen 3">
+            <div class="editable">Batman: The Dark Knight Returns (DC): Esta portada icónica presenta a Batman en una pose poderosa y sombría, envuelto en sombras. El uso del azul oscuro y el negro crea una atmósfera de misterio y peligro, capturando el tono oscuro de la historia.</div>
+        </div>
+        <div class="item">
+            <img src="https://acdn.mitiendanube.com/stores/955/579/products/dragonballcolor_cell_01-badc58f15b8bb8179217111441885276-1024-1024.jpg" alt="Imagen 1">
+            <div class="editable">Dragon Ball Z: Con colores brillantes y un diseño de alto contraste, esta portada evoca energía y acción. La postura dinámica del personaje y la intensidad de los colores representan la esencia del género de acción y aventura.</div>
+        </div>
+        <div class="item">
+            <img src="https://i.pinimg.com/736x/45/f6/ec/45f6ec9b26e14f578e2ead0290b3c18b.jpg" alt="Imagen 2">
+            <div class="editable">Naruto: Esta imagen utiliza tonos cálidos y una pose decidida del personaje principal, resaltando la determinación y el espíritu de lucha. La estética de líneas claras y colores vivos es típica del estilo shōnen.</div>
+        </div>
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/71tVVm8M0QL._AC_UF894,1000_QL80_.jpg" alt="Imagen 3">
+            <div class="editable">Death Note: La imagen presenta un diseño minimalista y oscuro que refleja el tono siniestro de la serie. Los colores oscuros y la expresión misteriosa del personaje insinúan la naturaleza psicológica y moralmente ambigua de la historia.</div>
+        </div>
+
+        <!-- Añade más portadas aquí -->
+    </div>
+    <footer>
+        &copy; 2024 Mi Sitio Web. Todos los derechos reservados.
+    </footer>
+</body>
+</html>
